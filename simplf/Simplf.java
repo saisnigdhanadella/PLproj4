@@ -4,13 +4,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
-
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 
 public class Simplf {
-    public static Interpreter interpreter = new Interpreter();
-
     public static void main(String[] args) throws IOException {
         if (args.length != 1) {
             System.out.println("Usage: simplf <sourcefile>");
@@ -34,6 +31,7 @@ public class Simplf {
         Desugar desugarer = new Desugar();
         statements = desugarer.desugar(statements);
 
+        Interpreter interpreter = new Interpreter();
         interpreter.interpret(statements);
     }
 
